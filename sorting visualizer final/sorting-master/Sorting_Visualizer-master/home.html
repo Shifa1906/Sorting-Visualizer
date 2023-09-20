@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Visualizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* :root {} */
+
+    body {
+        background: url(https://images.unsplash.com/photo-1676910226586-eb747ab85443?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80) no-repeat center center/cover;
+        /* background: linear-gradient(to right,
+                rgb(71, 65, 68),
+                rgb(233, 155, 198),
+                rgb(226, 203, 236)); */
+    }
+
+    #navbar {
+        display: flex;
+        justify-content: right;
+    }
+
+    #navbar ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+        /* background-color: rgb(197, 154, 238); */
+    }
+
+    #navbar ul li {
+        list-style: none;
+        justify-content: center;
+    }
+
+    #navbar ul li a {
+        display: block;
+        text-decoration: none;
+        padding: 25px;
+        font-size: 2rem;
+        color: black;
+    }
+
+    #navbar ul li a:hover {
+        color: red;
+    }
+
+
+    .name {
+        font-family: 'Merriweather', serif;
+        text-align: center;
+        padding: 70px;
+        font-size: 40px;
+    }
+
+    #About {
+        text-align: center;
+        padding: 2px 191px;
+    }
+
+    #About p {
+        border: 2px solid rgb(0, 0, 0);
+        border-bottom-left-radius: 91px;
+        border-top-right-radius: 91px;
+        box-shadow: 10px 20px black;
+        font-size: 2.5rem;
+        padding: 20px 50px;
+        margin: 40px;
+    }
+
+    .btn {
+        display: block;
+        text-align: center;
+    }
+
+    .btn button {
+        background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+        border: 2px solid black;
+        border-radius: 39px;
+        margin: 32px;
+        padding: 20px;
+    }
+
+    .btn a {
+        color: #000;
+        font-family: Phantomsans, sans-serif;
+        font-size: 28px;
+        text-decoration: none;
+        cursor: pointer;
+
+    }
+
+    #Contents {
+        text-align: center;
+        padding: 25px;
+    }
+
+    #Contents h1 {
+        /* background-color: #4b4141; */
+        padding: 10px;
+        font-size: 4rem;
+    }
+
+    #Contents ul li {
+        display: block;
+        background-color: lavender;
+        font-size: 2rem;
+        padding: 15px;
+        list-style: none;
+        text-decoration: none;
+
+    }
+
+
+    #Features {
+        display: grid;
+        place-items: center;
+        padding: 25px;
+
+    }
+
+    #Features h1 {
+        background-color: white;
+        font-size: 4rem;
+        padding: 22px;
+
+    }
+
+    .colors {
+        color: rgb(0, 0, 0);
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .fea1 {
+        background-color: #c1c1c1;
+        font-family: 'Merriweather', serif;
+        /* border: 2px solid black; */
+        border-radius: 15px;
+        box-shadow: 10px 10px 10px 5px black;
+        padding: 10px;
+        margin: 89px;
+    }
+
+    .fea1 p {
+        padding: 10px 4px;
+        margin: 18px;
+        font-size: 2rem;
+
+    }
+
+    .fea2 {
+        background-color: #c1c1c1;
+        font-family: 'Merriweather', serif;
+        /* border: 2px solid black; */
+        border-radius: 15px;
+        box-shadow: 10px 10px 10px 5px black;
+        padding: 10px;
+        margin: 86px;
+    }
+
+    .fea2 p {
+        padding: 10px 4px;
+        margin: 18px;
+        font-size: 2rem;
+
+
+    }
+
+    #Profile {
+        background-color: black;
+    }
+
+    #Profile h1 {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 10px 4px;
+        margin: 18px;
+        font-size: 4rem;
+
+
+    }
+
+    .card {
+        background-color: rgb(100, 94, 94);
+        display: inline-block;
+        border: 2px solid rgb(194, 13, 13);
+        border-radius: 15px;
+        box-shadow: 2px 10px 10px black;
+        box-sizing: border-box;
+        margin: 10px 80px;
+        width: 24%;
+        height: 415px;
+        padding: 23px;
+    }
+
+    .card img {
+        width: 22rem;
+        height: 21rem;
+        border-radius: 193px;
+    }
+
+    .card #shis {
+        width: 22rem;
+        height: 21rem;
+        border-radius: 193px;
+    }
+
+    .card #punni {
+        width: 22rem;
+        height: 21rem;
+        border-radius: 193px;
+    }
+
+    .card h5 {
+        font-size: 1.5rem;
+    }
+
+    .card p {
+        font-size: 1.2rem;
+    }
+
+    .end {
+        text-align: center;
+        background-color: #000;
+        color: white;
+    }
+
+    .end1 {
+        font-size: 2.2rem;
+        padding: 18px;
+        margin: 0px;
+    }
+</style>
+
+<body>
+    <div id="navbar">
+        <ul>
+            <li id="item"><a href="#Home">Home</a></li>
+            <li id="item"><a href="#About">About</a></li>
+            <li id="item"><a href="#Contents">Contents</a></li>
+            <li id="item"><a href="#Features">Features</a></li>
+            <li id="item"><a href="#Profile">Profile</a></li>
+        </ul>
+    </div>
+
+
+    <div class="name">
+        <h1>Sorting Visualizer</h1>
+    </div>
+
+    <div id="About">
+        <p>A Sorting Visualizer is a tool that allows users to visualize and understand how various sorting algorithms
+            work. Sorting algorithms are used to arrange a list of items in a particular order, such as alphabetical or
+            numerical. This Sorting Visualizer has been created using HTML, CSS, and JavaScript. By using HTML, CSS, and
+            JavaScript, the visualizer can be used in any modern web browser, making it accessible to a wide range of
+            users. Users can select from various sorting algorithms and watch as the visualizer arranges the items in
+            real time, helping them better understand how each algorithm works.</p>
+    </div>
+
+    <div class="btn"><button><a href="index.html">Sorting Visualizer</a></button> </div>
+
+    <div id="Contents">
+        <h1>Contents</h1>
+        <ul>
+            <li><a href="index.html">Bubble Sort</a></li>
+            <li><a href="index.html">Selection Sort</a></li>
+            <li><a href="index.html">Insertion Sort</a></li>
+            <li><a href="index.html">Merge Sort</a></li>
+            <li><a href="index.html">Quick Sort</a></li>
+            <li><a href="index.html">Heap Sort</a></li>
+        </ul>
+    </div>
+
+    <div id="Features">
+        <h1>Features</h1>
+        <div class="fea1">
+            <h2 class="colors">Colored Indications</h2>
+            <p>Blue: Default</p>
+            <p>Yellow: Being compared</p>
+            <p>Red: Identified as in incorrect position and to be moved</p>
+            <p>Green: In correct position</p>
+        </div>
+        <div class="fea2">
+            <h2 class="colors">Controls for visualizations</h2>
+            <p>Speed</p>
+            <p>Array size ()</p>
+            <p>Generation of new Array (Randomly generate new Array)</p>
+            <p>Time and Space complexity of algorithm being visualized</p>
+
+        </div>
+    </div>
+
+    <section>
+        <div id="Profile">
+            <h1>Project Members</h1>
+            <div class="card">
+                <img id="shis" src="shifa1.jpg" alt="Shifa Mulla">
+                <h5>SHIFA MULLA</h5>
+                <p>USN - 3PD20IS030 </p>
+            </div>
+            <div class="card">
+                <img src="mntzm.jpg" alt="Md Muntazeem Saradgi">
+                <h5>MD MUNTAZEEM SARADGI</h5>
+                <p>USN - 3PD20IS026 </p>
+            </div>
+            <div class="card">
+                <img id="punni" src="puneet.jpg" alt="Puneet NJ">
+                <h5>PUNEET NJ</h5>
+                <p>USN - 3PD20IS036 </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="end">
+            <h2 class="end1">Mini Project-Under the guidance of:Prof Gouri Patil Maam</h2>
+            <p class="end1"> ISE 6th sem </p>
+            <b class="end1"> PDA COLLEGE OF ENGINEERING, KALABURAGI</b>
+            <div>
+
+
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+
+</html>
